@@ -7,3 +7,4 @@ export interface UtmParams {
   captured_at?: string;
   landing_url?: string;
 }
+

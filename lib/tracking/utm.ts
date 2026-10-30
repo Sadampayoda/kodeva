@@ -62,3 +62,4 @@ export function formatUtmSummary(utm?: UtmParams | null): string {
   if (utm.utm_medium) parts.push(`media: ${utm.utm_medium}`);
   return parts.join(" | ");
 }
+

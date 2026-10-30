@@ -24,3 +24,4 @@ export interface Ga4EventPayload {
   utm_campaign?: string;
   [key: string]: unknown;
 }
+
