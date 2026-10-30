@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { writeClient } from "@/lib/sanity/client";
 import { ContactType, LeadStatus } from "@/enums/lead.enum";
+import { UtmParams } from "@/types/utm.type";
 import { promises as fs } from "fs";
 import path from "path";
 
@@ -14,6 +15,7 @@ interface LeadRecord {
   message?: string;
   status: LeadStatus;
   submittedAt: string;
+  utm?: UtmParams;
 }
 
 async function saveLeadToFile(record: LeadRecord) {
@@ -39,7 +41,7 @@ async function saveLeadToFile(record: LeadRecord) {
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { name, contact, message, hp } = body;
+    const { name, contact, message, hp, utm } = body;
 
     if (hp) {
       return NextResponse.json({ success: true, message: "Pesan terkirim" });
@@ -83,6 +85,7 @@ export async function POST(req: Request) {
       message: typeof message === "string" ? message.trim() : "",
       status: LeadStatus.NEW,
       submittedAt: new Date().toISOString(),
+      utm: utm || undefined,
     };
 
     if (process.env.SANITY_API_TOKEN) {
@@ -134,4 +137,3 @@ export async function GET() {
     return NextResponse.json({ total: 0, leads: [] });
   }
 }
-

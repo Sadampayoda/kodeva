@@ -11,3 +11,4 @@ export enum PaymentSimulationStatus {
   SUCCESS = "success",
   FAILED = "failed",
 }
+

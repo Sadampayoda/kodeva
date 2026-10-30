@@ -6,6 +6,8 @@ import { ProductItem, SanityProductResponse } from "@/types/product.type";
 import { TestimonialItem, SanityTestimonialResponse } from "@/types/testimonial.type";
 import { FaqItem, SanityFaqResponse } from "@/types/faq.type";
 import { LeadFormData, LeadFormErrors } from "@/types/lead.type";
+import { captureUtmFromUrl, getStoredUtm } from "@/lib/tracking/utm";
+import { trackCtaClick } from "@/lib/tracking/dataLayer";
 
 const defaultHero: LandingHeroData = {
   badgeText: "Solusi Digital Modern",
@@ -13,7 +15,7 @@ const defaultHero: LandingHeroData = {
   subtitle:
     "Dapatkan website profesional, source code aplikasi siap pakai, dan template premium untuk mengakselerasi pertumbuhan bisnis Anda tanpa ribet.",
   backgroundImage:
-    "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=2070&q=80",
+    "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=800&q=75",
   ctaText: "Jelajahi Produk Unggulan",
   ctaLink: "#featured-products",
 };
@@ -161,6 +163,7 @@ export default function useLandingPage() {
   });
 
   useEffect(() => {
+    captureUtmFromUrl();
     let isMounted = true;
 
     async function loadLandingData() {
@@ -329,10 +332,11 @@ export default function useLandingPage() {
     setLeadErrors({});
 
     try {
+      const currentUtm = getStoredUtm();
       const res = await fetch("/api/lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(leadForm),
+        body: JSON.stringify({ ...leadForm, utm: currentUtm || undefined }),
       });
 
       const result = await res.json();
@@ -365,6 +369,10 @@ export default function useLandingPage() {
     setRefreshIndex((prev) => prev + 1);
   };
 
+  const handleCtaClick = (ctaName: string, ctaLocation: string, ctaTarget: string) => {
+    trackCtaClick(ctaName, ctaLocation, ctaTarget);
+  };
+
   const isLoading = Boolean(loading?.show && loading?.type === "loading");
   const isError = Boolean(loading?.show && loading?.type === "error");
   const loadingMessage = loading?.message || "";
@@ -387,6 +395,7 @@ export default function useLandingPage() {
     handleSubmitLead,
     handleResetLeadForm,
     handleRefetch,
+    handleCtaClick,
   };
 }
 

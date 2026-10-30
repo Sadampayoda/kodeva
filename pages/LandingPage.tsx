@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar";
 import Section from "@/components/Section";
 import Card from "@/components/Card";
 import Footer from "@/components/Footer";
+import { getStoredUtm } from "@/lib/tracking/utm";
 import type { UseLandingPageReturn } from "@/hooks/useLandingPage";
 
 export type LandingPageProps = Partial<UseLandingPageReturn>;
@@ -27,7 +28,7 @@ export default function LandingPage(props: LandingPageProps) {
       subtitle:
         "Dapatkan website profesional, source code aplikasi siap pakai, dan template premium untuk mengakselerasi pertumbuhan bisnis Anda tanpa ribet.",
       backgroundImage:
-        "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=2070&q=80",
+        "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=800&q=75",
       ctaText: "Jelajahi Produk Unggulan",
       ctaLink: "/products",
     },
@@ -47,6 +48,7 @@ export default function LandingPage(props: LandingPageProps) {
     handleSubmitLead = () => {},
     handleResetLeadForm = () => {},
     handleRefetch = () => {},
+    handleCtaClick = () => {},
   } = props;
 
   return (
@@ -69,10 +71,18 @@ export default function LandingPage(props: LandingPageProps) {
       <Section id="hero" className="p-3 sm:p-5 md:p-8 flex flex-col">
         <Card
           radius="3xl"
-          bgImage={hero.backgroundImage}
+          bgImage={hero.backgroundImage || "/hero-bg.webp"}
           overlay="linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.75))"
           className="relative w-full flex-1 min-h-[92vh] flex flex-col justify-between text-white shadow-2xl overflow-hidden"
         >
+          <img
+            src="/hero-bg.webp"
+            alt="Hero background"
+            fetchPriority="high"
+            decoding="async"
+            className="absolute inset-0 w-full h-full object-cover -z-10"
+          />
+
           <div className="w-full max-w-7xl mx-auto px-6 sm:px-10 md:px-16 pt-36 md:pt-48 pb-16 flex-1 flex flex-col justify-center">
             <div className="max-w-3xl space-y-6">
               <div className="flex items-center gap-3">
@@ -92,7 +102,14 @@ export default function LandingPage(props: LandingPageProps) {
 
               <div className="pt-4 flex flex-wrap items-center gap-4">
                 <a
-                  href={hero.ctaLink || "#featured-products"}
+                  href={hero.ctaLink || "/products"}
+                  onClick={() =>
+                    handleCtaClick(
+                      hero.ctaText || "Jelajahi Produk",
+                      "hero_section",
+                      hero.ctaLink || "/products"
+                    )
+                  }
                   className="rounded-full bg-white text-zinc-950 px-7 py-3.5 text-xs sm:text-sm font-bold hover:bg-zinc-100 hover:shadow-xl active:scale-95 transition-all shadow-md inline-flex items-center gap-2"
                 >
                   <span>{hero.ctaText}</span>
@@ -113,6 +130,9 @@ export default function LandingPage(props: LandingPageProps) {
 
                 <Link
                   href="/blog"
+                  onClick={() =>
+                    handleCtaClick("Baca Artikel Blog", "hero_section", "/blog")
+                  }
                   className="rounded-full bg-white/15 backdrop-blur-md border border-white/30 text-white px-6 py-3.5 text-xs sm:text-sm font-semibold hover:bg-white/25 transition-all"
                 >
                   Baca Artikel Blog
@@ -185,6 +205,10 @@ export default function LandingPage(props: LandingPageProps) {
                   <img
                     src={product.coverImage}
                     alt={product.title}
+                    loading="lazy"
+                    decoding="async"
+                    width={600}
+                    height={375}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   {product.badge && (
@@ -210,6 +234,13 @@ export default function LandingPage(props: LandingPageProps) {
 
                     <Link
                       href={product.slug ? `/products/${product.slug}` : "/products"}
+                      onClick={() =>
+                        handleCtaClick(
+                          `product_card_${product.title}`,
+                          "featured_products_section",
+                          product.slug ? `/products/${product.slug}` : "/products"
+                        )
+                      }
                       className="block text-lg sm:text-xl font-bold text-zinc-900 group-hover:text-blue-600 transition-colors leading-snug"
                     >
                       {product.title}
@@ -234,6 +265,13 @@ export default function LandingPage(props: LandingPageProps) {
 
                     <Link
                       href={product.slug ? `/products/${product.slug}` : "/products"}
+                      onClick={() =>
+                        handleCtaClick(
+                          `buy_license_${product.title}`,
+                          "featured_products_section",
+                          product.slug ? `/products/${product.slug}` : "/products"
+                        )
+                      }
                       className="rounded-xl bg-[#222144] hover:bg-blue-600 text-white px-4 py-2.5 text-xs font-semibold transition-all shadow-sm active:scale-95"
                     >
                       Beli Lisensi
@@ -248,6 +286,13 @@ export default function LandingPage(props: LandingPageProps) {
         <div className="mt-12 text-center">
           <Link
             href="/products"
+            onClick={() =>
+              handleCtaClick(
+                "explore_all_marketplace_products",
+                "featured_products_footer",
+                "/products"
+              )
+            }
             className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-[#222144] hover:bg-blue-600 text-white font-bold text-xs sm:text-sm transition-all shadow-md active:scale-95"
           >
             <span>Jelajahi Semua Produk Marketplace</span>
@@ -297,6 +342,10 @@ export default function LandingPage(props: LandingPageProps) {
                 <img
                   src={testi.avatar}
                   alt={testi.name}
+                  loading="lazy"
+                  decoding="async"
+                  width={44}
+                  height={44}
                   className="w-11 h-11 rounded-full object-cover flex-shrink-0 border border-zinc-200"
                 />
                 <div className="min-w-0">
@@ -398,9 +447,20 @@ export default function LandingPage(props: LandingPageProps) {
 
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
             <div className="lg:col-span-6 space-y-6">
-              <span className="inline-block text-[10px] font-bold tracking-wider uppercase bg-white/15 px-3 py-1 rounded-full border border-white/20">
-                Konsultasi Gratis
-              </span>
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="inline-block text-[10px] font-bold tracking-wider uppercase bg-white/15 px-3 py-1 rounded-full border border-white/20">
+                  Konsultasi Gratis
+                </span>
+                {typeof window !== "undefined" && getStoredUtm()?.utm_source && (
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/25 border border-blue-400/40 text-[10px] font-bold text-blue-200">
+                    <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
+                    <span>
+                      Kampanye: {getStoredUtm()?.utm_source}
+                      {getStoredUtm()?.utm_campaign ? ` (${getStoredUtm()?.utm_campaign})` : ""}
+                    </span>
+                  </span>
+                )}
+              </div>
 
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-[1.12]">
                 Tertarik Mengembangkan

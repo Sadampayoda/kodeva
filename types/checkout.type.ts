@@ -1,5 +1,6 @@
 import { PaymentMethod, PaymentSimulationStatus } from "@/enums/payment.enum";
 import { CartItem } from "@/types/cart.type";
+import { UtmParams } from "@/types/utm.type";
 
 export interface BuyerFormData {
   fullName: string;
@@ -25,4 +26,5 @@ export interface OrderReceipt {
   grandTotal: number;
   licenseKeys: string[];
   status: PaymentSimulationStatus;
+  utm?: UtmParams;
 }

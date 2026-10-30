@@ -20,3 +20,4 @@ export interface CartTotals {
   totalDiscount: number;
   grandTotal: number;
 }
+

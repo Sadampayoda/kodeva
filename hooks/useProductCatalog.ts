@@ -120,3 +120,4 @@ export default function useProductCatalog() {
 }
 
 export type UseProductCatalogReturn = ReturnType<typeof useProductCatalog>;
+

@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import useCart from "@/hooks/useCart";
 import { BuyerFormData, BuyerFormErrors, OrderReceipt } from "@/types/checkout.type";
 import { PaymentMethod, PaymentSimulationStatus } from "@/enums/payment.enum";
+import { trackBeginCheckout } from "@/lib/tracking/dataLayer";
+import { captureUtmFromUrl, getStoredUtm } from "@/lib/tracking/utm";
 
 function generateLicenseKey(prefix: string): string {
   const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
@@ -24,6 +26,18 @@ export default function useCheckout() {
   const [receipt, setReceipt] = useState<OrderReceipt | null>(null);
 
   const { items, totals, handleClearCart } = useCart();
+  const trackedBeginCheckoutRef = useRef<boolean>(false);
+
+  useEffect(() => {
+    captureUtmFromUrl();
+  }, []);
+
+  useEffect(() => {
+    if (items.length > 0 && !trackedBeginCheckoutRef.current) {
+      trackedBeginCheckoutRef.current = true;
+      trackBeginCheckout(items, totals.grandTotal);
+    }
+  }, [items, totals.grandTotal]);
 
   const handleInputChange = (field: keyof BuyerFormData, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
@@ -89,6 +103,8 @@ export default function useCheckout() {
       )
     );
 
+    const storedUtm = getStoredUtm();
+
     const newReceipt: OrderReceipt = {
       orderId: `KDV-${Date.now().toString().slice(-6)}`,
       date: new Intl.DateTimeFormat("id-ID", {
@@ -102,6 +118,7 @@ export default function useCheckout() {
       grandTotal: totals.grandTotal,
       licenseKeys,
       status: PaymentSimulationStatus.SUCCESS,
+      utm: storedUtm || undefined,
     };
 
     setReceipt(newReceipt);

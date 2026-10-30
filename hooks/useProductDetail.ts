@@ -1,9 +1,11 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
 import { useRouter } from "next/navigation";
 import useLoading from "@/hooks/useLoading";
 import useCart from "@/hooks/useCart";
 import { ProductItem, TierOption } from "@/types/product.type";
 import { ProductTier } from "@/enums/tier.enum";
+import { trackViewItem, trackAddToCart } from "@/lib/tracking/dataLayer";
+import { captureUtmFromUrl } from "@/lib/tracking/utm";
 
 export default function useProductDetail(slug?: string) {
   const [product, setProduct] = useState<ProductItem | null>(null);
@@ -21,6 +23,11 @@ export default function useProductDetail(slug?: string) {
     message: "Memuat detail produk...",
     type: "loading",
   });
+  const trackedProductRef = useRef<string | null>(null);
+
+  useEffect(() => {
+    captureUtmFromUrl();
+  }, []);
 
   useEffect(() => {
     if (!slug) return;
@@ -58,9 +65,11 @@ export default function useProductDetail(slug?: string) {
     };
   }, [slug, refreshIndex, handleResetLoading, setLoading]);
 
-  const selectedTier: TierOption | undefined = useMemo(() => {
+  const selectedTier = useMemo<TierOption | undefined>(() => {
     if (!product || !product.tiers) return undefined;
-    return product.tiers.find((t) => t.tier === selectedTierKey) || product.tiers[0];
+    return (
+      product.tiers.find((t) => t.tier === selectedTierKey) || product.tiers[0]
+    );
   }, [product, selectedTierKey]);
 
   const inCartCount = useMemo(() => {
@@ -73,6 +82,13 @@ export default function useProductDetail(slug?: string) {
     return Math.max(0, (product.promoQuota ?? 0) - inCartCount);
   }, [product, inCartCount]);
 
+  useEffect(() => {
+    if (!product) return;
+    if (trackedProductRef.current === product.id) return;
+    trackedProductRef.current = product.id;
+    trackViewItem(product, selectedTier);
+  }, [product, selectedTier]);
+
   const handleSelectTier = (tier: ProductTier) => {
     setSelectedTierKey(tier);
     setAddedSuccess(false);
@@ -83,10 +99,11 @@ export default function useProductDetail(slug?: string) {
     setActiveScreenshot(src);
   };
 
-  const handleQuantityChange = (newQty: number) => {
+  const handleQuantityChange = (delta: number) => {
+    const newQty = quantity + delta;
     if (newQty < 1) return;
-    if (newQty > remainingPromoQuota) {
-      setActionError(`Hanya tersisa ${remainingPromoQuota} lisensi promo yang dapat ditambahkan.`);
+    if (remainingPromoQuota > 0 && newQty > remainingPromoQuota) {
+      setActionError(`Kuantitas melebihi sisa kuota promo (${remainingPromoQuota} lisensi)`);
       return;
     }
     setActionError(null);
@@ -101,6 +118,7 @@ export default function useProductDetail(slug?: string) {
     if (!result.success) {
       setActionError(result.message || "Gagal menambahkan ke keranjang");
     } else {
+      trackAddToCart(product, selectedTier, quantity);
       setAddedSuccess(true);
       setTimeout(() => setAddedSuccess(false), 4000);
     }
@@ -116,6 +134,7 @@ export default function useProductDetail(slug?: string) {
       return;
     }
 
+    trackAddToCart(product, selectedTier, quantity);
     router.push("/cart");
   };
 

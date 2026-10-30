@@ -7,6 +7,7 @@ import Section from "@/components/Section";
 import Card from "@/components/Card";
 import Footer from "@/components/Footer";
 import { PaymentMethod, PaymentSimulationStatus } from "@/enums/payment.enum";
+import { getStoredUtm } from "@/lib/tracking/utm";
 import type { UseCheckoutReturn } from "@/hooks/useCheckout";
 
 export type CheckoutPageProps = Partial<UseCheckoutReturn>;
@@ -139,6 +140,18 @@ export default function CheckoutPage(props: CheckoutPageProps) {
                   Lunas
                 </span>
               </div>
+              {receipt.utm?.utm_source && (
+                <div className="sm:col-span-2 pt-2 border-t border-zinc-100 flex flex-wrap items-center gap-2 text-xs text-zinc-500">
+                  <span className="text-[11px] font-bold text-zinc-400 uppercase tracking-wider">
+                    Atribusi Kampanye (UTM):
+                  </span>
+                  <span className="font-semibold text-blue-700 bg-blue-50 px-2 py-0.5 rounded border border-blue-200">
+                    {receipt.utm.utm_source}
+                    {receipt.utm.utm_campaign ? ` / ${receipt.utm.utm_campaign}` : ""}
+                    {receipt.utm.utm_medium ? ` (${receipt.utm.utm_medium})` : ""}
+                  </span>
+                </div>
+              )}
             </div>
 
             <div className="space-y-3 pb-6 border-b border-zinc-200">
@@ -258,6 +271,16 @@ export default function CheckoutPage(props: CheckoutPageProps) {
           <p className="text-xs sm:text-sm text-zinc-500 mt-1">
             Lengkapi data pembeli untuk menerima akses source code dan serial lisensi aplikasi.
           </p>
+
+          {typeof window !== "undefined" && getStoredUtm()?.utm_source && (
+            <div className="mt-3 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-xs text-blue-800">
+              <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse" />
+              <span>
+                Atribusi Kampanye: <strong>{getStoredUtm()?.utm_source}</strong>
+                {getStoredUtm()?.utm_campaign ? ` (${getStoredUtm()?.utm_campaign})` : ""}
+              </span>
+            </div>
+          )}
         </div>
 
         {items.length === 0 ? (
@@ -658,3 +681,4 @@ export default function CheckoutPage(props: CheckoutPageProps) {
     </main>
   );
 }
+

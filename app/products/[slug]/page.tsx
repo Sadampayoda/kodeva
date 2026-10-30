@@ -11,3 +11,4 @@ export default function Page() {
 
   return <ProductDetailPage {...productDetailState} />;
 }
+

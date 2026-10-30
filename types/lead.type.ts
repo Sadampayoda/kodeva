@@ -1,11 +1,13 @@
 import { ContactType, LeadStatus } from "@/enums/lead.enum";
 import { SanityDocument } from "@/types/sanity.type";
+import { UtmParams } from "@/types/utm.type";
 
 export interface LeadFormData {
   name: string;
   contact: string;
   message?: string;
   hp?: string;
+  utm?: UtmParams;
 }
 
 export interface LeadFormErrors {
@@ -21,5 +23,5 @@ export interface LeadItem extends SanityDocument {
   message?: string;
   status: LeadStatus;
   submittedAt: string;
+  utm?: UtmParams;
 }
-
