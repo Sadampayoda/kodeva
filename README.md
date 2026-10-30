@@ -1,6 +1,6 @@
 # Kodeva — Landing Campaign, Blog & Mini Marketplace
 
-[Link deploy] | [Link CMS admin](/studio) | [Link repo]
+[Website Live Demo](https://kodeva.sadamdahhh.my.id/) | [CMS Admin Studio](https://kodeva.sadamdahhh.my.id/studio) | [GitHub Repository](https://github.com/Sadampayoda/kodeva)
 
 ## 1. Waktu Pengerjaan
 
@@ -15,11 +15,12 @@
 | Dokumentasi                                                           | 30 mnt   | 30 mnt    |
 | **Total**                                                             |          | **7.5 jam** |
 
-## 2. Akun Demo
+## 2. Akun Demo & Akses CMS
 
-| Peran     | URL       | Email | Password       |
-| --------- | --------- | ----- | -------------- |
-| CMS admin | `/studio` |       | (Sanity Login) |
+| Peran | URL | Kredensial / Login | Keterangan |
+| :--- | :--- | :--- | :--- |
+| **Website Publik** | [https://kodeva.sadamdahhh.my.id/](https://kodeva.sadamdahhh.my.id/) | Publik (tanpa login) | Landing page, katalog marketplace, cart, blog feed & detail |
+| **CMS Admin Studio** | [https://kodeva.sadamdahhh.my.id/studio](https://kodeva.sadamdahhh.my.id/studio) | Login via Sanity (Google / GitHub / Email) | Manajemen konten real-time (produk, artikel, FAQ, testimoni, hero) |
 
 ## 3. Cara Menjalankan di Lokal
 
