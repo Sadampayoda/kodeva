@@ -77,10 +77,7 @@ export const postType = defineType({
       name: "relatedProducts",
       title: "Produk terkait (marketplace)",
       type: "array",
-      of: [
-        { type: "reference", to: [{ type: "product" }] },
-        { type: "string" },
-      ],
+      of: [{ type: "reference", to: [{ type: "product" }] }],
     }),
     defineField({
       name: "seoTitle",
