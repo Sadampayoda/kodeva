@@ -19,16 +19,7 @@ export interface NavbarProps {
 
 const defaultNavItems: NavItem[] = [
   { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
-  {
-    label: "Pages",
-    href: "#",
-    children: [
-      { label: "Articles", href: "/articles" },
-      { label: "Categories", href: "/categories" },
-      { label: "Author", href: "/author" },
-    ],
-  },
+  { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
 ];
 
