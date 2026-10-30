@@ -22,7 +22,6 @@ export const Pagination: React.FC<PaginationProps> = ({
       aria-label="Pagination"
       className={`flex items-center justify-center gap-1.5 sm:gap-2 select-none ${className}`}
     >
-      {/* Tombol Prev */}
       <button
         type="button"
         onClick={() => handlePageClick(currentPage - 1)}
@@ -49,32 +48,31 @@ export const Pagination: React.FC<PaginationProps> = ({
         <span>Prev</span>
       </button>
 
-      {/* Nomor Halaman (1, 2, 3...) */}
       <div className="flex items-center gap-1 sm:gap-1.5">
-        {handleGetPageNumbers().map((page, index) => {
-          if (page === "...") {
+        {handleGetPageNumbers().map((item, index) => {
+          if (item === "...") {
             return (
               <span
                 key={`ellipsis-${index}`}
-                className="w-8 sm:w-9 h-10 flex items-center justify-center text-xs text-zinc-400"
+                className="w-8 sm:w-10 h-10 flex items-center justify-center text-xs font-bold text-zinc-400"
               >
-                •••
+                ...
               </span>
             );
           }
 
-          const pageNum = Number(page);
+          const pageNum = Number(item);
           const isActive = pageNum === currentPage;
 
           return (
             <button
-              key={pageNum}
+              key={`page-${pageNum}`}
               type="button"
               onClick={() => handlePageClick(pageNum)}
-              className={`w-9 sm:w-10 h-10 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
+              className={`w-9 sm:w-10 h-10 rounded-xl text-xs sm:text-sm font-bold border transition-all active:scale-95 cursor-pointer ${
                 isActive
-                  ? "bg-zinc-950 text-white shadow-md scale-105"
-                  : "bg-white border border-zinc-200 text-zinc-700 hover:bg-zinc-100 hover:text-zinc-950 hover:border-zinc-300 active:scale-95 shadow-sm"
+                  ? "bg-[#222144] text-white border-[#222144] shadow-md shadow-indigo-950/20"
+                  : "bg-white border-zinc-200 text-zinc-700 hover:border-zinc-400 hover:text-zinc-950 hover:bg-zinc-50 shadow-sm"
               }`}
             >
               {pageNum}
@@ -83,7 +81,6 @@ export const Pagination: React.FC<PaginationProps> = ({
         })}
       </div>
 
-      {/* Tombol Next */}
       <button
         type="button"
         onClick={() => handlePageClick(currentPage + 1)}
@@ -102,7 +99,11 @@ export const Pagination: React.FC<PaginationProps> = ({
           stroke="currentColor"
           strokeWidth="2.5"
         >
-          <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M9 5l7 7-7 7"
+          />
         </svg>
       </button>
     </nav>

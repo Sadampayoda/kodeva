@@ -19,7 +19,6 @@ export default function useCard({
   overlay,
   style,
 }: UseCardParams = {}) {
-  // 1. Tentukan class border
   let borderClass = "";
   if (typeof border === "string") {
     borderClass = border;
@@ -27,10 +26,8 @@ export default function useCard({
     borderClass = "border border-zinc-200/80";
   }
 
-  // 2. Tentukan radius
   const radiusClass = radiusClasses[radius || "2xl"] || radiusClasses["2xl"];
 
-  // 3. Tentukan background style & overlay
   const customStyle: React.CSSProperties = { ...style };
   let bgClass = "";
 
@@ -48,16 +45,12 @@ export default function useCard({
     }
 
     if (showOverlay) {
-      customStyle.backgroundImage = `${overlayValue}, url('${bgImage}')`;
+      customStyle.backgroundImage = `${overlayValue}, url(${bgImage})`;
     } else {
-      customStyle.backgroundImage = `url('${bgImage}')`;
+      customStyle.backgroundImage = `url(${bgImage})`;
     }
-  } else if (bgColor) {
-    if (bgColor.startsWith("#") || bgColor.startsWith("rgb")) {
-      customStyle.backgroundColor = bgColor;
-    } else {
-      bgClass = bgColor;
-    }
+  } else {
+    bgClass = bgColor;
   }
 
   return {

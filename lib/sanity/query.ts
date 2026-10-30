@@ -30,44 +30,28 @@ export class Query {
     this.conditions.push(`_type == "${table}"`);
   }
 
-  /**
-   * Filter query GROQ (contoh: column: "slug.current", value: "judul-post")
-   */
   where({ column, value, operator = "==" }: WhereParams): this {
     const formattedValue = typeof value === "string" ? `"${value}"` : value;
     this.conditions.push(`${column} ${operator} ${formattedValue}`);
     return this;
   }
 
-  /**
-   * Urutan data (contoh: field: "publishedAt", direction: "desc")
-   */
   orderBy({ field, direction = "desc" }: OrderParams): this {
     this.orderRules.push(`${field} ${direction}`);
     return this;
   }
 
-  /**
-   * Tentukan kolom/field apa saja yang ingin diambil
-   * (contoh: ["_id", "title", "slug", '"category": category[]->{title, slug}'])
-   */
   select(fields: string[]): this {
     this.projections = fields;
     return this;
   }
 
-  /**
-   * Atur pagination halaman
-   */
   paginate(page: number, perPage: number): this {
     this.offsetCount = (page - 1) * perPage;
     this.limitCount = perPage;
     return this;
   }
 
-  /**
-   * Mengompilasi semua parameter menjadi string query GROQ Sanity yang valid
-   */
   build(): string {
     let groqString = `*[${this.conditions.join(" && ")}]`;
 
@@ -88,9 +72,6 @@ export class Query {
     return groqString;
   }
 
-  /**
-   * Menjalankan query langsung ke database Sanity
-   */
   async execute<T>(): Promise<T> {
     const groq = this.build();
     return client.fetch<T>(groq);

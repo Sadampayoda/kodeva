@@ -6,7 +6,12 @@ const clientConfig: SanityClientProps = {
   projectId,
   dataset,
   apiVersion,
-  useCdn: true,
+  useCdn: false,
 };
 
 export const client = createClient(clientConfig);
+
+export const writeClient = createClient({
+  ...clientConfig,
+  token: process.env.SANITY_API_TOKEN,
+});

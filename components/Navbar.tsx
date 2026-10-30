@@ -12,23 +12,21 @@ export interface NavItem {
 export interface NavbarProps {
   className?: string;
   logoText?: string;
-  cartCount?: number;
   theme?: "dark" | "light";
-  onSubscribeClick?: () => void;
 }
 
 const defaultNavItems: NavItem[] = [
   { label: "Home", href: "/" },
+  { label: "Produk", href: "/#featured-products" },
   { label: "Blog", href: "/blog" },
-  { label: "Contact", href: "/contact" },
+  { label: "FAQ", href: "/#faq" },
+  { label: "Konsultasi", href: "/#lead-capture" },
 ];
 
 export const Navbar: React.FC<NavbarProps> = ({
   className = "",
-  logoText = process.env.NEXT_PUBLIC_APP_NAME || "",
-  cartCount = 0,
+  logoText = process.env.NEXT_PUBLIC_APP_NAME || "KODEVA",
   theme = "dark",
-  onSubscribeClick,
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -60,17 +58,15 @@ export const Navbar: React.FC<NavbarProps> = ({
       } ${className}`}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-10 flex items-center justify-between">
-        {/* Left: Logo */}
         <Link
           href="/"
-          className={`flex items-center gap-2.5 font-semibold text-lg md:text-xl tracking-tight group ${
+          className={`flex items-center gap-2.5 font-black text-lg md:text-xl tracking-tight group ${
             isLight ? "text-zinc-950" : "text-white"
           }`}
         >
           <span className="uppercase">{logoText}</span>
         </Link>
 
-        {/* Center: Desktop Navigation Links */}
         <nav
           className={`hidden md:flex items-center gap-8 text-sm font-medium ${
             isLight ? "text-zinc-600" : "text-white/80"
@@ -110,7 +106,6 @@ export const Navbar: React.FC<NavbarProps> = ({
                     </svg>
                   </button>
 
-                  {/* Dropdown Menu */}
                   {pagesDropdownOpen && (
                     <div
                       className={`absolute top-full left-0 mt-1 w-44 rounded-xl backdrop-blur-md border p-2 shadow-xl animate-in fade-in slide-in-from-top-1 ${
@@ -150,36 +145,20 @@ export const Navbar: React.FC<NavbarProps> = ({
               </Link>
             );
           })}
-
-          {/* Cart Link */}
-          <Link
-            href="/cart"
-            className={`transition-colors flex items-center gap-1 ${
-              isLight ? "hover:text-zinc-950" : "hover:text-white"
-            }`}
-          >
-            <span>Cart</span>
-            <span className={isLight ? "text-zinc-400" : "text-white/60"}>
-              ({cartCount})
-            </span>
-          </Link>
         </nav>
 
-        {/* Right: CTA Subscribe Button & Mobile Menu Toggle */}
         <div className="flex items-center gap-3">
-          <button
-            type="button"
-            onClick={onSubscribeClick}
-            className={`rounded-full font-medium text-xs md:text-sm px-5 md:px-6 py-2 md:py-2.5 transition-all shadow-sm active:scale-95 ${
+          <a
+            href="#lead-capture"
+            className={`rounded-full font-semibold text-xs md:text-sm px-5 md:px-6 py-2 md:py-2.5 transition-all shadow-sm active:scale-95 ${
               isLight
                 ? "bg-zinc-950 text-white hover:bg-zinc-800"
                 : "bg-white text-zinc-950 hover:bg-zinc-200"
             }`}
           >
-            Subscribe
-          </button>
+            Konsultasi
+          </a>
 
-          {/* Mobile Menu Hamburger Button */}
           <button
             type="button"
             onClick={() => setMobileMenuOpen((prev) => !prev)}
@@ -223,7 +202,6 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
       </div>
 
-      {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
         <div
           className={`md:hidden backdrop-blur-xl border-b px-6 py-6 space-y-4 ${
@@ -234,67 +212,19 @@ export const Navbar: React.FC<NavbarProps> = ({
         >
           <div className="flex flex-col space-y-3 text-base font-medium">
             {defaultNavItems.map((item) => (
-              <React.Fragment key={item.label}>
-                {item.children ? (
-                  <div>
-                    <span
-                      className={`text-xs uppercase tracking-wider block mb-1 ${
-                        isLight ? "text-zinc-400" : "text-white/40"
-                      }`}
-                    >
-                      {item.label}
-                    </span>
-                    <div
-                      className={`pl-3 space-y-2 border-l ${
-                        isLight ? "border-zinc-200" : "border-white/10"
-                      }`}
-                    >
-                      {item.children.map((subItem) => (
-                        <Link
-                          key={subItem.label}
-                          href={subItem.href}
-                          onClick={() => setMobileMenuOpen(false)}
-                          className={
-                            isLight
-                              ? "block text-zinc-600 hover:text-zinc-950"
-                              : "block text-white/70 hover:text-white"
-                          }
-                        >
-                          {subItem.label}
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                ) : (
-                  <Link
-                    href={item.href}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className={`transition-colors ${
-                      isLight
-                        ? "text-zinc-700 hover:text-zinc-950"
-                        : "text-white/80 hover:text-white"
-                    }`}
-                  >
-                    {item.label}
-                  </Link>
-                )}
-              </React.Fragment>
+              <Link
+                key={item.label}
+                href={item.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className={`transition-colors ${
+                  isLight
+                    ? "text-zinc-700 hover:text-zinc-950"
+                    : "text-white/80 hover:text-white"
+                }`}
+              >
+                {item.label}
+              </Link>
             ))}
-
-            <Link
-              href="/cart"
-              onClick={() => setMobileMenuOpen(false)}
-              className={`pt-2 border-t flex items-center justify-between ${
-                isLight
-                  ? "border-zinc-200 text-zinc-700 hover:text-zinc-950"
-                  : "border-white/10 text-white/80 hover:text-white"
-              }`}
-            >
-              <span>Cart</span>
-              <span className={isLight ? "text-zinc-400" : "text-white/60"}>
-                ({cartCount})
-              </span>
-            </Link>
           </div>
         </div>
       )}

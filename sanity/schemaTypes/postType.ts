@@ -25,6 +25,19 @@ export const postType = defineType({
         }),
     }),
     defineField({
+      name: "status",
+      title: "Status Publikasi",
+      type: "string",
+      options: {
+        list: [
+          { title: "Draft", value: "draft" },
+          { title: "Published", value: "published" },
+        ],
+        layout: "radio",
+      },
+      initialValue: "published",
+    }),
+    defineField({
       name: "coverImage",
       title: "Gambar cover",
       type: "image",
@@ -62,10 +75,12 @@ export const postType = defineType({
     }),
     defineField({
       name: "relatedProducts",
-      title: "Produk terkait (slug produk)",
+      title: "Produk terkait (marketplace)",
       type: "array",
-      of: [{ type: "string" }],
-      description: "Contoh: kodeva-kasir, kodeva-hr",
+      of: [
+        { type: "reference", to: [{ type: "product" }] },
+        { type: "string" },
+      ],
     }),
     defineField({
       name: "seoTitle",

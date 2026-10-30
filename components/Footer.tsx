@@ -8,14 +8,12 @@ export interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({
   className = "",
-  logoText = process.env.NEXT_PUBLIC_APP_NAME || "Journal X",
+  logoText = process.env.NEXT_PUBLIC_APP_NAME || "Kodeva",
 }) => {
   return (
     <footer className={`bg-white border-t border-zinc-100 pt-16 pb-12 ${className}`}>
       <div className="max-w-7xl mx-auto px-6 sm:px-10 md:px-14">
-        {/* Top Section */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8 pb-12 border-b border-zinc-100">
-          {/* Col 1: Brand & Bio */}
           <div className="md:col-span-1 space-y-4">
             <Link
               href="/"
@@ -24,132 +22,97 @@ export const Footer: React.FC<FooterProps> = ({
               <span>{logoText}</span>
             </Link>
             <p className="text-xs sm:text-sm text-zinc-500 leading-relaxed max-w-xs">
-              Exploring terrains, conquering nature, and sharing stories from the
-              wildest corners of the globe.
+              Membangun solusi digital, aplikasi kasir, sistem SaaS modern, dan template premium untuk bisnis Anda.
             </p>
           </div>
 
-          {/* Col 2: Navigation */}
           <div className="space-y-3">
             <h4 className="text-xs font-bold uppercase tracking-wider text-zinc-900">
-              Navigation
+              Navigasi
             </h4>
             <ul className="space-y-2 text-sm text-zinc-600">
               <li>
                 <Link href="/" className="hover:text-zinc-950 transition-colors">
-                  Home
+                  Beranda
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="hover:text-zinc-950 transition-colors">
-                  About
+                <Link href="/blog" className="hover:text-zinc-950 transition-colors">
+                  Blog & Artikel
                 </Link>
               </li>
               <li>
-                <Link href="/articles" className="hover:text-zinc-950 transition-colors">
-                  Articles
-                </Link>
+                <a href="#featured-products" className="hover:text-zinc-950 transition-colors">
+                  Produk Unggulan
+                </a>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-zinc-950 transition-colors">
-                  Contact
+                <a href="#faq" className="hover:text-zinc-950 transition-colors">
+                  FAQ
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div className="space-y-3">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-zinc-900">
+              Produk & Layanan
+            </h4>
+            <ul className="space-y-2 text-sm text-zinc-600">
+              <li>
+                <a href="#featured-products" className="hover:text-zinc-950 transition-colors">
+                  Kodeva POS
+                </a>
+              </li>
+              <li>
+                <a href="#featured-products" className="hover:text-zinc-950 transition-colors">
+                  Kodeva SaaS Kit
+                </a>
+              </li>
+              <li>
+                <a href="#featured-products" className="hover:text-zinc-950 transition-colors">
+                  Kodeva HR & Payroll
+                </a>
+              </li>
+              <li>
+                <Link href="/studio" className="hover:text-zinc-950 transition-colors">
+                  Sanity Studio (CMS)
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Col 3: Categories */}
           <div className="space-y-3">
             <h4 className="text-xs font-bold uppercase tracking-wider text-zinc-900">
-              Categories
+              Bantuan & Kontak
             </h4>
             <ul className="space-y-2 text-sm text-zinc-600">
               <li>
-                <Link href="#categories" className="hover:text-zinc-950 transition-colors">
-                  Travel
-                </Link>
-              </li>
-              <li>
-                <Link href="#categories" className="hover:text-zinc-950 transition-colors">
-                  Adventure
-                </Link>
-              </li>
-              <li>
-                <Link href="#categories" className="hover:text-zinc-950 transition-colors">
-                  Gear & Equipment
-                </Link>
-              </li>
-              <li>
-                <Link href="#categories" className="hover:text-zinc-950 transition-colors">
-                  Outdoor Guides
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Col 4: Socials */}
-          <div className="space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-zinc-900">
-              Follow Us
-            </h4>
-            <ul className="space-y-2 text-sm text-zinc-600">
-              <li>
-                <a
-                  href="https://twitter.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="hover:text-zinc-950 transition-colors"
-                >
-                  Twitter / X
+                <a href="#lead-capture" className="hover:text-zinc-950 transition-colors">
+                  Konsultasi Gratis
                 </a>
               </li>
               <li>
-                <a
-                  href="https://instagram.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="hover:text-zinc-950 transition-colors"
-                >
-                  Instagram
+                <a href="#lead-capture" className="hover:text-zinc-950 transition-colors">
+                  Hubungi Sales
                 </a>
               </li>
               <li>
-                <a
-                  href="https://youtube.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="hover:text-zinc-950 transition-colors"
-                >
-                  YouTube
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://linkedin.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="hover:text-zinc-950 transition-colors"
-                >
-                  LinkedIn
-                </a>
+                <span className="text-zinc-400 text-xs">Senin - Jumat, 09:00 - 18:00 WIB</span>
               </li>
             </ul>
           </div>
         </div>
 
-        {/* Bottom Section */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-400">
           <p>© {new Date().getFullYear()} {logoText}. All rights reserved.</p>
-          <div className="flex items-center gap-6">
-            <Link href="/privacy" className="hover:text-zinc-700 transition-colors">
+          <div className="flex gap-6">
+            <a href="#" className="hover:text-zinc-600 transition-colors">
               Privacy Policy
-            </Link>
-            <Link href="/terms" className="hover:text-zinc-700 transition-colors">
+            </a>
+            <a href="#" className="hover:text-zinc-600 transition-colors">
               Terms of Service
-            </Link>
-            <Link href="/cookies" className="hover:text-zinc-700 transition-colors">
-              Cookie Settings
-            </Link>
+            </a>
           </div>
         </div>
       </div>
@@ -158,4 +121,3 @@ export const Footer: React.FC<FooterProps> = ({
 };
 
 export default Footer;
-
