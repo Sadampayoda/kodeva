@@ -1,0 +1,404 @@
+[
+  {
+    "id": "prod-1",
+    "title": "Kodeva POS & Kasir Multi-Outlet",
+    "slug": "website-kasir",
+    "price": 450000,
+    "originalPrice": 750000,
+    "excerpt": "Aplikasi kasir cloud modern lengkap dengan manajemen stok bahan, multi-cabang, struk digital WhatsApp, dan rekonsiliasi kas harian.",
+    "fullDescription": "Solusi kasir cloud all-in-one untuk ritel, F&B, dan salon kecantikan. Terintegrasi langsung dengan printer Bluetooth, laci kasir, dan pembayaran QRIS statis maupun dinamis. Arsitektur modular mempermudah penyesuaian sistem loyalty point dan kartu member.",
+    "coverImage": "https://images.unsplash.com/photo-1556742049-0a67c5574f73?auto=format&fit=crop&w=800&q=80",
+    "screenshots": [
+      "https://images.unsplash.com/photo-1556742049-0a67c5574f73?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1556740758-90de374c12ad?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "badge": "Best Seller",
+    "isFeatured": true,
+    "rating": 5,
+    "category": "Kasir POS",
+    "demoUrl": "https://demo.kodeva.id/pos",
+    "promoQuota": 5,
+    "tiers": [
+      {
+        "tier": "basic",
+        "name": "Paket Basic (1 Outlet / 2 User)",
+        "price": 450000,
+        "originalPrice": 750000,
+        "licenseCount": 1,
+        "features": [
+          "1 Outlet Aktif",
+          "Maksimal 2 Akun Kasir",
+          "Manajemen Stok Dasar",
+          "Laporan Penjualan Harian",
+          "Dukungan WhatsApp 30 Hari"
+        ]
+      },
+      {
+        "tier": "pro",
+        "name": "Paket Pro (3 Outlet / 10 User)",
+        "price": 850000,
+        "originalPrice": 1400000,
+        "licenseCount": 3,
+        "features": [
+          "Hingga 3 Outlet Terhubung",
+          "Maksimal 10 Akun Kasir & Supervisor",
+          "Transfer Stok Antar-Cabang",
+          "Integrasi Struk WhatsApp & Email",
+          "Laporan Margin Laba Kotor",
+          "Dukungan Prioritas 6 Bulan"
+        ]
+      },
+      {
+        "tier": "business",
+        "name": "Paket Enterprise (Unlimited Outlet)",
+        "price": 1750000,
+        "originalPrice": 2900000,
+        "licenseCount": 10,
+        "features": [
+          "Outlet & Cabang Tanpa Batas",
+          "User & Kasir Tanpa Batas",
+          "API Webhook & Integrasi ERP",
+          "Source Code Lengkap (No Obfuscation)",
+          "Bantuan Deployment & Database Setup",
+          "Garansi Update Selamanya"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "prod-2",
+    "title": "Kodeva SaaS Starter Kit Next.js 16",
+    "slug": "website-saas",
+    "price": 650000,
+    "originalPrice": 1100000,
+    "excerpt": "Boilerplate SaaS siap produksi dengan Next.js 16 App Router, Tailwind CSS v4, multi-tenant database, dan integrasi langganan otomatis.",
+    "fullDescription": "Akselerasikan peluncuran startup perangkat lunak Anda dalam hitungan hari. Sudah terpasang sistem autentikasi OAuth, manajemen tim (organizations & RBAC), gerbang pembayaran berulang (subscription billing), dashboard analitik, dan integrasi email transaksional.",
+    "coverImage": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
+    "screenshots": [
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "badge": "Flash Sale",
+    "isFeatured": true,
+    "rating": 5,
+    "category": "SaaS Starter",
+    "demoUrl": "https://demo.kodeva.id/saas",
+    "promoQuota": 6,
+    "tiers": [
+      {
+        "tier": "basic",
+        "name": "Paket Solo Founder",
+        "price": 650000,
+        "originalPrice": 1100000,
+        "licenseCount": 1,
+        "features": [
+          "1 Proyek Lisensi Komersial",
+          "Next.js 16 App Router + Tailwind v4",
+          "Autentikasi Email & Google OAuth",
+          "Dashboard Pelanggan Standar",
+          "Dokumentasi Setup Server"
+        ]
+      },
+      {
+        "tier": "pro",
+        "name": "Paket Startup Pro",
+        "price": 1250000,
+        "originalPrice": 1950000,
+        "licenseCount": 3,
+        "features": [
+          "Hingga 3 Proyek Komersial",
+          "Multi-Tenant & Organisasi / Tim",
+          "Sistem Role & Permission (RBAC)",
+          "Billing Langganan Bulanan/Tahunan",
+          "Komponen UI Lengkap 40+ Widget",
+          "Akses Private Repository GitHub"
+        ]
+      },
+      {
+        "tier": "business",
+        "name": "Paket Agency Unlimited",
+        "price": 2400000,
+        "originalPrice": 3800000,
+        "licenseCount": 15,
+        "features": [
+          "Lisensi Klien & Proyek Tanpa Batas",
+          "White-label Hak Cipta Penuh",
+          "Integrasi Sanity Headless CMS",
+          "Workflow CI/CD Docker & Vercel",
+          "Konsultasi Arsitektur 1-on-1",
+          "Dukungan Langsung via Private Slack"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "prod-3",
+    "title": "Kodeva HR & Absensi GPS Online",
+    "slug": "kodeva-hr",
+    "price": 550000,
+    "originalPrice": 850000,
+    "excerpt": "Sistem informasi manajemen SDM terpadu dengan absensi radius GPS, verifikasi selfie wajah, approval cuti, dan kalkulator PPh 21.",
+    "fullDescription": "Kelola kehadiran staf remote maupun on-site secara transparan. Mendukung shift dinamis, lembur otomatis, pengajuan klaim reimburse, pelacakan sisa cuti tahunan, hingga cetak slip gaji berformat PDF resmi perusahaan dengan satu klik.",
+    "coverImage": "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80",
+    "screenshots": [
+      "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "badge": "Popular",
+    "isFeatured": true,
+    "rating": 5,
+    "category": "Manajemen SDM",
+    "demoUrl": "https://demo.kodeva.id/hr",
+    "promoQuota": 4,
+    "tiers": [
+      {
+        "tier": "basic",
+        "name": "Paket UMKM (s.d. 25 Karyawan)",
+        "price": 550000,
+        "originalPrice": 850000,
+        "licenseCount": 1,
+        "features": [
+          "Maksimal 25 Akun Staf",
+          "Absensi Geolocation GPS",
+          "Verifikasi Foto Selfie Kamera",
+          "Pengajuan Izin & Sakit Online",
+          "Rekap Jam Kerja Bulanan"
+        ]
+      },
+      {
+        "tier": "pro",
+        "name": "Paket Korporat (s.d. 100 Karyawan)",
+        "price": 980000,
+        "originalPrice": 1600000,
+        "licenseCount": 4,
+        "features": [
+          "Maksimal 100 Akun Staf",
+          "Perhitungan Lembur & Denda Otomatis",
+          "Generate Slip Gaji PDF & Email",
+          "Multi Level Approval Manajer",
+          "Integrasi Mesin Fingerprint (ZKTeco API)",
+          "Dukungan Teknis Siap Bantu"
+        ]
+      },
+      {
+        "tier": "business",
+        "name": "Paket Enterprise (Unlimited Karyawan)",
+        "price": 1950000,
+        "originalPrice": 3200000,
+        "licenseCount": 12,
+        "features": [
+          "Karyawan & Kantor Cabang Tanpa Batas",
+          "Kalkulasi Pajak PPh 21 TER 2024",
+          "Manajemen Aset & Inventaris Laptop",
+          "Full Source Code React + Next.js",
+          "Bantuan Deploy ke VPS / Cloud Server",
+          "Garansi Update & Konsultasi VIP"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "prod-4",
+    "title": "Kodeva Toko Online & E-Commerce Pro",
+    "slug": "kodeva-toko",
+    "price": 490000,
+    "originalPrice": 890000,
+    "excerpt": "Platform toko online mandiri bebas biaya komisi marketplace dengan cek ongkir 30+ kurir otomatis dan checkout instan via WhatsApp.",
+    "fullDescription": "Tinggalkan ketergantungan potongan biaya admin marketplace yang mencekik. Dilengkapi kalkulator ongkos kirim real-time (JNE, J&T, SiCepat, dll.), integrasi resi otomatis, katalog varian warna/ukuran, kupon voucher flash sale, dan sistem keranjang belanja modern.",
+    "coverImage": "https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&w=800&q=80",
+    "screenshots": [
+      "https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1555421689-491a97ff2040?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "badge": "Terlaris",
+    "isFeatured": true,
+    "rating": 5,
+    "category": "E-Commerce",
+    "demoUrl": "https://demo.kodeva.id/toko",
+    "promoQuota": 7,
+    "tiers": [
+      {
+        "tier": "basic",
+        "name": "Paket Starter Toko",
+        "price": 490000,
+        "originalPrice": 890000,
+        "licenseCount": 1,
+        "features": [
+          "Katalog s.d. 150 Produk",
+          "Checkout Form WhatsApp Otomatis",
+          "Integrasi Kurir Reguler",
+          "Pengaturan Banner & Kategori",
+          "Panduan Pasang Domain Sendiri"
+        ]
+      },
+      {
+        "tier": "pro",
+        "name": "Paket Super Merchant",
+        "price": 890000,
+        "originalPrice": 1450000,
+        "licenseCount": 3,
+        "features": [
+          "Katalog Produk Tanpa Batas",
+          "Cek Ongkir Otomatis 30+ Ekspedisi",
+          "Sistem Kupon Diskon & Flash Sale",
+          "Review & Ulasan Bintang Pelanggan",
+          "Payment Gateway Midtrans / Xendit",
+          "Dashboard Analitik Omzet Penjualan"
+        ]
+      },
+      {
+        "tier": "business",
+        "name": "Paket Multi-Vendor Marketplace",
+        "price": 1850000,
+        "originalPrice": 3100000,
+        "licenseCount": 10,
+        "features": [
+          "Sistem Multi-Penjual (Vendor Marketplace)",
+          "Komisi & Rekening Escrow Penarikan Saldo",
+          "Manajemen Afiliasi & Komisi Reseller",
+          "Full Source Code Frontend & Backend",
+          "Setup Server & SSL Gratis",
+          "Dukungan Maintenance 1 Tahun"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "prod-5",
+    "title": "Kodeva LMS & Portal Kelas Online",
+    "slug": "kodeva-learning",
+    "price": 590000,
+    "originalPrice": 950000,
+    "excerpt": "Platform pembelajaran digital interaktif dengan proteksi streaming video anti-unduh, kuis sertifikat otomatis, dan forum diskusi.",
+    "fullDescription": "Bantu kreator edukasi dan lembaga kursus mendistribusikan materi premium dengan aman. Menyediakan kurikulum berbasis modul & materi bab, tracking progres siswa, ujian kuis pilihan ganda dengan penilaian instan, dan penerbitan sertifikat digital ber-barcode verifikasi unik.",
+    "coverImage": "https://images.unsplash.com/photo-1501504905252-473c47e087f8?auto=format&fit=crop&w=800&q=80",
+    "screenshots": [
+      "https://images.unsplash.com/photo-1501504905252-473c47e087f8?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "badge": "Edu-Tech",
+    "isFeatured": true,
+    "rating": 5,
+    "category": "Edu-Tech",
+    "demoUrl": "https://demo.kodeva.id/learning",
+    "promoQuota": 5,
+    "tiers": [
+      {
+        "tier": "basic",
+        "name": "Paket Pengajar Solo",
+        "price": 590000,
+        "originalPrice": 950000,
+        "licenseCount": 1,
+        "features": [
+          "Maksimal 5 Kelas / Kursus",
+          "Video Player Embed YouTube/Vimeo",
+          "Sertifikat Kelulusan Otomatis",
+          "Grup Tanya Jawab Siswa",
+          "Dukungan Panduan Instalasi"
+        ]
+      },
+      {
+        "tier": "pro",
+        "name": "Paket Akademi Pro",
+        "price": 1150000,
+        "originalPrice": 1800000,
+        "licenseCount": 3,
+        "features": [
+          "Kelas & Kursus Tanpa Batas",
+          "Player Cloudflare Stream Anti-Download",
+          "Kuis Pilihan Ganda & Bank Soal",
+          "Sistem Guru / Instruktur Multi-User",
+          "Pembayaran Otomatis QRIS & E-Wallet",
+          "Dukungan Teknis Prioritas"
+        ]
+      },
+      {
+        "tier": "business",
+        "name": "Paket Universitas / Institusi",
+        "price": 2250000,
+        "originalPrice": 3600000,
+        "licenseCount": 10,
+        "features": [
+          "Siswa & Kelas Tanpa Batas",
+          "Sistem Ujian Tryout Berdurasi Waktu",
+          "Integrasi Zoom Live Webinar API",
+          "Full Source Code Next.js & TypeScript",
+          "Bantuan Konfigurasi Cloud Server",
+          "Konsultasi Fitur Kustom"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "prod-6",
+    "title": "Kodeva Listing Properti & Agen Real Estate",
+    "slug": "kodeva-properti",
+    "price": 520000,
+    "originalPrice": 880000,
+    "excerpt": "Website portal listing rumah dan apartemen dengan integrasi peta interaktif Google Maps, filter simulasi KPR, dan kontak agen instan.",
+    "fullDescription": "Tingkatkan konversi penjualan properti dengan presentasi visual yang elegan. Menampilkan tur foto 360 derajat, spesifikasi detail (luas tanah, kamar tidur, sertifikat legalitas), kalkulator simulasi angsuran KPR bank terkemuka, dan lead capture form per agen terdaftar.",
+    "coverImage": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=800&q=80",
+    "screenshots": [
+      "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "badge": "Hot Property",
+    "isFeatured": true,
+    "rating": 5,
+    "category": "Properti",
+    "demoUrl": "https://demo.kodeva.id/properti",
+    "promoQuota": 6,
+    "tiers": [
+      {
+        "tier": "basic",
+        "name": "Paket Agen Mandiri",
+        "price": 520000,
+        "originalPrice": 880000,
+        "licenseCount": 1,
+        "features": [
+          "Listing s.d. 50 Unit Properti",
+          "Peta Lokasi Google Maps",
+          "Kalkulator Simulasi Cicilan KPR",
+          "Tombol WhatsApp Agen Properti",
+          "Galeri Foto Resolusi Tinggi"
+        ]
+      },
+      {
+        "tier": "pro",
+        "name": "Paket Kantor Broker Pro",
+        "price": 990000,
+        "originalPrice": 1650000,
+        "licenseCount": 4,
+        "features": [
+          "Listing Properti Tanpa Batas",
+          "Multi-Akun Agen & Profil Tim Broker",
+          "Fitur Filter Canggih (Harga, Kamar, Kota)",
+          "Pencarian Berdasarkan Radius Wilayah",
+          "Manajemen Lead Pembeli Masuk",
+          "Dukungan Setup & Optimasi SEO"
+        ]
+      },
+      {
+        "tier": "business",
+        "name": "Paket Developer Property Hub",
+        "price": 1950000,
+        "originalPrice": 3300000,
+        "licenseCount": 12,
+        "features": [
+          "Katalog Kawasan Perumahan / Apartemen",
+          "Sistem Booking Fee Online Terintegrasi",
+          "Masterplan Interaktif & Virtual Tour 360",
+          "Full Source Code Next.js & Tailwind",
+          "Bantuan Instalasi di Server Anda",
+          "Garansi Update & Bimbingan Teknis"
+        ]
+      }
+    ]
+  }
+]

@@ -29,7 +29,7 @@ export default function LandingPage(props: LandingPageProps) {
       backgroundImage:
         "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=2070&q=80",
       ctaText: "Jelajahi Produk Unggulan",
-      ctaLink: "#featured-products",
+      ctaLink: "/products",
     },
     featuredProducts = [],
     testimonials = [],
@@ -208,9 +208,12 @@ export default function LandingPage(props: LandingPageProps) {
                       </span>
                     </div>
 
-                    <h3 className="text-lg sm:text-xl font-bold text-zinc-900 group-hover:text-blue-600 transition-colors leading-snug">
+                    <Link
+                      href={product.slug ? `/products/${product.slug}` : "/products"}
+                      className="block text-lg sm:text-xl font-bold text-zinc-900 group-hover:text-blue-600 transition-colors leading-snug"
+                    >
                       {product.title}
-                    </h3>
+                    </Link>
 
                     <p className="text-xs sm:text-sm text-zinc-500 line-clamp-2 leading-relaxed">
                       {product.excerpt}
@@ -229,18 +232,30 @@ export default function LandingPage(props: LandingPageProps) {
                       </span>
                     </div>
 
-                    <a
-                      href="#lead-capture"
+                    <Link
+                      href={product.slug ? `/products/${product.slug}` : "/products"}
                       className="rounded-xl bg-[#222144] hover:bg-blue-600 text-white px-4 py-2.5 text-xs font-semibold transition-all shadow-sm active:scale-95"
                     >
                       Beli Lisensi
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </Card>
             ))}
           </div>
         )}
+
+        <div className="mt-12 text-center">
+          <Link
+            href="/products"
+            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-[#222144] hover:bg-blue-600 text-white font-bold text-xs sm:text-sm transition-all shadow-md active:scale-95"
+          >
+            <span>Jelajahi Semua Produk Marketplace</span>
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </Link>
+        </div>
       </Section>
 
       <Section
