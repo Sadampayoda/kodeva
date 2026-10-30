@@ -125,3 +125,4 @@ Meskipun AI mampu membuat GROQ string sederhana, kelas `Query` builder dengan an
    Pengembang membutuhkan arsitektur *chaining API* (`query.where().orderBy().paginate(page, limit).select([...]).build()`) yang dapat digunakan berulang kali oleh `useLandingPage`, `useBlogPage`, dan `useBlogDetail` secara konsisten tanpa perlu menulis ulang string kueri mentah yang rentan salah ketik (*typo-prone*).
 3. **Kontrol Sanitasi**:
    Menulis sendiri builder memastikan tidak ada kebocoran draft dokumen Sanity di lingkungan produksi dengan secara eksplisit menyisipkan filter `!(_id in path("drafts.**"))` pada setiap kueri publik.
+
